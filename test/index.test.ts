@@ -21,7 +21,7 @@ describe('assert-log', function() {
     log('a')
     log('b')
     expect(() => log.read().assert('a')).throws(
-      'expected log to contain ["a"], but got ["a","b"]'
+      'expected ["a"] to match ["a","b"]'
     )
   })
 

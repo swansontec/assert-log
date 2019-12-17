@@ -1,5 +1,5 @@
-import { arrayAssert, logAssert, promiseAssert } from './assert'
-import { addHiddenProperties } from './utils'
+import { AssertionError } from './assertion-error'
+import { addHiddenProperties, compareArrays } from './utils'
 
 interface AssertArray extends Array<string> {
   assert(...expected: string[]): void
@@ -16,7 +16,7 @@ interface AssertPromise extends Promise<AssertArray> {
  * To log an event, call this function with a string describing the event.
  * Then, to verify that everything is correct, call `read` or `waitFor`
  * to retrieve the entries. These methods return an array or promise
- * with an `assert` method that can be used.
+ * with an `assert` method that can be used to check the entries.
  */
 export interface AssertLog {
   (...args: unknown[]): void
@@ -95,4 +95,39 @@ export function makeAssertLog(opts: AssertLogOptions = {}): AssertLog {
   }
 
   return addHiddenProperties(log, { assert: logAssert, waitFor, read })
+}
+
+/**
+ * The assert method to be placed on an array.
+ */
+function arrayAssert(this: string[], ...expected: string[]): void {
+  const actual = this.slice().sort()
+  if (!compareArrays(actual, expected.sort())) {
+    throw new AssertionError({ actual, expected })
+  }
+}
+
+/**
+ * The assert method to be placed on a promise.
+ */
+function promiseAssert(
+  this: Promise<string[]>,
+  ...expected: string[]
+): Promise<void> {
+  return this.then(array => {
+    const actual = array.slice().sort()
+    if (!compareArrays(actual, expected.sort())) {
+      throw new AssertionError({ actual, expected })
+    }
+  })
+}
+
+/**
+ * The assert method to placed on a log.
+ */
+function logAssert(this: AssertLog, ...expected: string[]): void {
+  const actual = this.read().sort()
+  if (!compareArrays(actual, expected.sort())) {
+    throw new AssertionError({ actual, expected })
+  }
 }
