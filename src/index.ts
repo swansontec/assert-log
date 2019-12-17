@@ -2,6 +2,7 @@ import { AssertionError } from './assertion-error'
 import { stringify } from './stringify'
 import { addHiddenProperties, compareArrays } from './utils'
 
+export { expectRejection } from './expect-rejection'
 export { stringify } from './stringify'
 
 interface AssertArray extends Array<string> {
