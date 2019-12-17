@@ -33,3 +33,8 @@ interface AssertLogOptions {
  * @param opts Options include `verbose` and `timeout`.
  */
 declare export function makeAssertLog(opts?: AssertLogOptions): AssertLog
+
+/**
+ * Pretty-prints arbitrary input data.
+ */
+declare export function stringify(item: any): string

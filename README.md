@@ -91,3 +91,23 @@ The `makeAssertLog` function also takes a `verbose` boolean option, which copies
 ```typescript
 const log = makeAssertLog({ verbose: true })
 ```
+
+### Pretty-printing
+
+The `log` function converts its arguments to strings using a function called `stringify`. You can access this function yourself, which can be useful if you don't know the exact log contents ahead of time:
+
+```javascript
+import { makeAssertLog, stringify } from 'assert-log'
+
+const log = makeAssertLog()
+
+// Logs something like 'Got event { type: "grid", location: [0.1, 0.2] }':
+const event = {
+  type: 'grid',
+  location: [Math.random(), Math.random()]
+}
+log('Got event', event)
+
+// Use `stringify` to help build the expected message:
+log.assert(`Got event ${stringify(event)}`)
+```

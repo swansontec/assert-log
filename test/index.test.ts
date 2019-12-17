@@ -21,8 +21,14 @@ describe('assert-log', function() {
     log('a')
     log('b')
     expect(() => log.read().assert('a')).throws(
-      'expected ["a"] to match ["a","b"]'
+      'expected ["a"] to match ["a", "b"]'
     )
+  })
+
+  it('Makes pretty log messages', function() {
+    const log = makeAssertLog()
+    log('got', [1, 2, new Error('ouch')])
+    log.assert('got [1, 2, Error: ouch]')
   })
 
   it('Works asynchronously', function() {

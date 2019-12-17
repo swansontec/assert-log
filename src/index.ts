@@ -1,5 +1,8 @@
 import { AssertionError } from './assertion-error'
+import { stringify } from './stringify'
 import { addHiddenProperties, compareArrays } from './utils'
+
+export { stringify } from './stringify'
 
 interface AssertArray extends Array<string> {
   assert(...expected: string[]): void
@@ -85,7 +88,7 @@ export function makeAssertLog(opts: AssertLogOptions = {}): AssertLog {
     for (let i = 0; i < arguments.length; ++i) {
       const arg = arguments[i]
       if (i > 0) event += ' '
-      event += typeof arg === 'object' ? JSON.stringify(arg) : String(arg)
+      event += typeof arg === 'string' ? arg : stringify(arg)
     }
 
     // Handle the event:
