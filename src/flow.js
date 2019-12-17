@@ -32,6 +32,4 @@ interface AssertLogOptions {
  * Used for testing callbacks.
  * @param opts Options include `verbose` and `timeout`.
  */
-declare export default function makeAssertLog(
-  opts?: AssertLogOptions
-): AssertLog
+declare export function makeAssertLog(opts?: AssertLogOptions): AssertLog

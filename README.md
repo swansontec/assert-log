@@ -4,7 +4,7 @@
 
 If you need to unit-test some code that calls callbacks, you could use a mocking library like [sinon.js](https://sinonjs.org/), but there is a simpler technique. Just write your own callbacks, but have them send their output to a log. When the test is over, verify that the log matches your expectation. For example, suppose you want to unit-test this thing:
 
-```typescript
+```javascript
 class ExampleCounter {
   on(event, callback) { /* ... */ }
   increment() { /* ... */ }
@@ -14,8 +14,8 @@ class ExampleCounter {
 
 Here is what the test might look like:
 
-```typescript
-import makeAssertLog from 'assert-log'
+```javascript
+import { makeAssertLog } from 'assert-log'
 
 const log = makeAssertLog()
 
@@ -38,6 +38,26 @@ log.assert('Error: Count cannot be negative')
 The `log` function records a log entry. It accepts multiple arguments, which it concatenates together to make a single string.
 
 The `assert` method verifies that that log contains the given strings in any order, and then clears the log.
+
+## Setup
+
+Install:
+
+```sh
+yarn add --dev assert-log
+# or:
+npm install --save-dev assert-log
+```
+
+Import:
+
+```javascript
+import { makeAssertLog } from 'assert-log'
+// or:
+const { makeAssertLog } = require('assert-log')
+```
+
+## Advanced usage
 
 If you need more control than `assert` provides, the log also has a `read` method. This method removes log entries and returns them. It accepts the maximum number of entries to return, but this is optional. It returns an array of strings. The returned array also has an `assert` method for convenience:
 

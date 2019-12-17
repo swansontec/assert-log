@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import { describe, it } from 'mocha'
 
-import makeAssertLog from '../src/index'
+import { makeAssertLog } from '../src/index'
 
 describe('assert-log', function() {
   it('Works synchronously', function() {

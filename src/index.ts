@@ -35,7 +35,7 @@ interface AssertLogOptions {
  * Used for testing callbacks.
  * @param opts Options include `verbose` and `timeout`.
  */
-export default function makeAssertLog(opts: AssertLogOptions = {}): AssertLog {
+export function makeAssertLog(opts: AssertLogOptions = {}): AssertLog {
   const { timeout = 1000, verbose = false } = opts
   const events: string[] = []
 
