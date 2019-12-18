@@ -1,5 +1,9 @@
 # assert-log
 
+## 0.2.1 (2019-12-18)
+
+- Fix broken Flow types.
+
 ## 0.2.0 (2019-12-18)
 
 - Switch to named exports.
