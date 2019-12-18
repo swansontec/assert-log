@@ -1,5 +1,10 @@
 # assert-log
 
+## 0.2.0 (2019-12-18)
+
+- Switch to named exports.
+- Export a `stringify` helper.
+
 ## 0.1.0 (2019-12-16)
 
 - Initial release.
