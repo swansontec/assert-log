@@ -1,3 +1,5 @@
+// @flow
+
 interface AssertArray extends Array<string> {
   assert(...expected: string[]): void;
 }
@@ -16,7 +18,7 @@ interface AssertPromise extends Promise<AssertArray> {
  * with an `assert` method that can be used.
  */
 export interface AssertLog {
-  (...args: unknown[]): void;
+  (...args: any[]): void;
   assert(...expected: string[]): void;
   read(count?: number): AssertArray;
   waitFor(count: number): AssertPromise;

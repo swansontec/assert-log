@@ -35,7 +35,7 @@ export default {
   ],
   plugins: [
     resolve({ extensions }),
-    flowEntry({ types: 'src/flow.js' }),
+    flowEntry({ types: 'src/flow-types.js' }),
     babel(babelOpts),
     filesize()
   ]

@@ -25,7 +25,7 @@
     "lib/*",
     "package.json",
     "README.md",
-    "src/flow.js"
+    "src/flow-types.js"
   ],
   "main": "lib/assert-log.cjs.js",
   "module": "lib/assert-log.js",
