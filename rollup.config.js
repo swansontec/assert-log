@@ -1,7 +1,7 @@
+import resolve from '@rollup/plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import filesize from 'rollup-plugin-filesize'
 import flowEntry from 'rollup-plugin-flow-entry'
-import resolve from 'rollup-plugin-node-resolve'
 
 import packageJson from './package.json'
 
