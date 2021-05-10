@@ -3,8 +3,8 @@ import { describe, it } from 'mocha'
 
 import { makeAssertLog } from '../src/index'
 
-describe('assert-log', function() {
-  it('Works synchronously', function() {
+describe('assert-log', function () {
+  it('Works synchronously', function () {
     const log = makeAssertLog()
     log('a')
     log('b')
@@ -16,7 +16,7 @@ describe('assert-log', function() {
     expect(log.read()).to.deep.equal(['b'])
   })
 
-  it('Throws pretty errors', function() {
+  it('Throws pretty errors', function () {
     const log = makeAssertLog()
     log('a')
     log('b')
@@ -25,13 +25,13 @@ describe('assert-log', function() {
     )
   })
 
-  it('Makes pretty log messages', function() {
+  it('Makes pretty log messages', function () {
     const log = makeAssertLog()
     log('got', [1, 2, new Error('ouch')])
     log.assert('got [1, 2, Error: ouch]')
   })
 
-  it('Works asynchronously', function() {
+  it('Works asynchronously', function () {
     const promises: Array<Promise<void>> = []
     const log = makeAssertLog({ timeout: 100 })
 
