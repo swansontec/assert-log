@@ -10,8 +10,8 @@ class MyClass {
   }
 }
 
-describe('stringify', function() {
-  it('Handles primitives', function() {
+describe('stringify', function () {
+  it('Handles primitives', function () {
     expect(stringify('a')).equals('"a"')
     expect(stringify(1)).equals('1')
     expect(stringify(true)).equals('true')
@@ -21,7 +21,7 @@ describe('stringify', function() {
     expect(stringify(Symbol('interrobang'))).equals('Symbol(interrobang)')
   })
 
-  it('Handles array-like objects', function() {
+  it('Handles array-like objects', function () {
     expect(stringify(['a', 1])).equals('["a", 1]')
     expect(stringify(Uint8Array.from([0xff, 0]))).equals('[255, 0]')
     // eslint-disable-next-line no-new-wrappers
@@ -35,7 +35,7 @@ describe('stringify', function() {
     expect(stringify(extra)).equals('{ 0: 0, foo: "foo" }')
   })
 
-  it('Handles objects', function() {
+  it('Handles objects', function () {
     // Special cases:
     expect(stringify(new Date('2017'))).equals('2017-01-01T00:00:00.000Z')
     expect(stringify(new Error('boom'))).equals('Error: boom')
@@ -46,7 +46,7 @@ describe('stringify', function() {
     expect(stringify(new MyClass())).equals('{ x: 1 }')
   })
 
-  it('Handles recursion', function() {
+  it('Handles recursion', function () {
     const x: { a: object[] } = { a: [] }
     x.a[0] = x
     x.a[1] = x.a

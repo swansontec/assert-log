@@ -5,11 +5,11 @@ import { addHiddenProperties, compareArrays } from './utils'
 export { stringify } from './stringify'
 
 interface AssertArray extends Array<string> {
-  assert(...expected: string[]): void
+  assert: (...expected: string[]) => void
 }
 
 interface AssertPromise extends Promise<AssertArray> {
-  assert(...expected: string[]): Promise<void>
+  assert: (...expected: string[]) => Promise<void>
 }
 
 /**
@@ -23,9 +23,9 @@ interface AssertPromise extends Promise<AssertArray> {
  */
 export interface AssertLog {
   (...args: unknown[]): void
-  assert(...expected: string[]): void
-  read(count?: number): AssertArray
-  waitFor(count: number): AssertPromise
+  assert: (...expected: string[]) => void
+  read: (count?: number) => AssertArray
+  waitFor: (count: number) => AssertPromise
 }
 
 interface AssertLogOptions {
