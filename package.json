@@ -1,6 +1,6 @@
 {
   "name": "assert-log",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A simple way to unit-test callbacks",
   "keywords": [
     "assert",
