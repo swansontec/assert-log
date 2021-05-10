@@ -20,6 +20,9 @@
   "contributors": [
     "William Swanson <william@edge.app>"
   ],
+  "main": "lib/assert-log.cjs.js",
+  "module": "lib/assert-log.js",
+  "types": "lib/src/index.d.ts",
   "files": [
     "CHANGELOG.md",
     "lib/*",
@@ -27,9 +30,6 @@
     "README.md",
     "src/flow-types.js"
   ],
-  "main": "lib/assert-log.cjs.js",
-  "module": "lib/assert-log.js",
-  "types": "lib/src/index.d.ts",
   "scripts": {
     "fix": "npm run lint -- --fix",
     "lint": "eslint --ext .js,.ts .",
